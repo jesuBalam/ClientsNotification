@@ -1,0 +1,12 @@
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\ClientsNotification.exe.config
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\ClientsNotification.exe
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\ClientsNotification.pdb
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\obj\Debug\ClientsNotification.csprojAssemblyReference.cache
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\obj\Debug\ClientsNotification.csproj.CoreCompileInputs.cache
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\obj\Debug\ClientsNotification.exe
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\obj\Debug\ClientsNotification.pdb
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\EPPlus.dll
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\EPPlus.Interfaces.dll
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\EPPlus.System.Drawing.dll
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\bin\Debug\EPPlus.xml
+E:\Developer\Hiuman\C#\XmlData\ClientNotification\ClientsNotification\ClientsNotification\obj\Debug\ClientsNotification.csproj.CopyComplete
