@@ -27,6 +27,10 @@ namespace ClientsNotification
             //Construct final table CHECK
             //Construct excel CHECK
             //Send mail to all emails of catalogue CHECK
+
+
+            //Enviar correo a email encargado mencionandole que info y fecha se encontro informacion
+            //Actualizar fecha de tabla final excel cuando sea retroactiva
         }
     }
 }

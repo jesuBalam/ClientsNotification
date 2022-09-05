@@ -26,15 +26,18 @@ namespace ClientsNotification
         public static string initialDate = "01-08-2022";
         public static string endDate = "07-08-2022";
 
-        public static string initialDateRetro = "01-08-2022";
-        public static string endDateRetro = "07-08-2022";
+        public static string initialDateRetro;
+        public static string endDateRetro;
 
         public static int retriesCount = 0;
 
         public static void Check()
         {
             //Console.WriteLine("PARSING");
-           
+            initialDate = ConfigurationManager.AppSettings["initialDate"].ToString();
+            endDate = ConfigurationManager.AppSettings["endDate"].ToString();
+            initialDateRetro = ConfigurationManager.AppSettings["initialDate"].ToString();
+            endDateRetro = ConfigurationManager.AppSettings["endDate"].ToString();
 
             finalData.Clear();
             result.Clear();
@@ -180,7 +183,7 @@ namespace ClientsNotification
                 var adapter = new SqlDataAdapter(command);
                 var dataset = new DataSet();
                 adapter.Fill(dataset);
-                dataRetroactive = dataset.Tables[0];                
+                dataRetroactive = dataset.Tables[0];
             }
             connection.Close();
 
@@ -189,7 +192,8 @@ namespace ClientsNotification
                 foreach(DataRow rowM in missingStations.Rows)
                 {
                     if (row["U_Destino"].ToString().Trim() == rowM["DESTINO"].ToString().Trim())
-                    {
+                    {                        
+                        row["Column1"] = initialDate;
                         finalData.ImportRow(row);
                     }
                 }
@@ -207,6 +211,11 @@ namespace ClientsNotification
                 {
 
                     stationsFounded.Add(row["DESTINO"].ToString());
+                    //new Sender email
+                    List<string> emails = new List<string>();                    
+                    emails.Add(row["E-MAIL"].ToString().Trim());                    
+                    EmailUtils.EmailSenderByPackage(emails, "", $"Se envió información retroactiva de tu reporte con la fecha: {rowFounded["Column1"]}");
+
                     Console.WriteLine(row["ESTACIONES"] + "founded in " + initialDateRetro + " : " + endDateRetro);
                 }
             }

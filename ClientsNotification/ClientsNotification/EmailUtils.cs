@@ -52,7 +52,7 @@ namespace ClientsNotification
            
         }
 
-        public static void EmailSenderByPackage(List<string> emails, string attachmentPath = "")
+        public static void EmailSenderByPackage(List<string> emails, string attachmentPath = "", string message = "Recuerda subir la información de tu estación.")
         {
             try
             {
@@ -69,7 +69,7 @@ namespace ClientsNotification
                     Subject = "Recordatorio",
                     Body = "<h1>Recordatorio</h1>" +
                     "</br>" +
-                    "<h2> Recuerda subir la información de tu estación. </h2>",
+                    "<h2> "+message+" </h2>",
                     IsBodyHtml = true,
                 };
 
