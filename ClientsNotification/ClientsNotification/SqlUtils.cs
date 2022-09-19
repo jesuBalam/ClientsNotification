@@ -30,6 +30,7 @@ namespace ClientsNotification
         public static string endDateRetro;
 
         public static int retriesCount = 0;
+        private static int countDays = 0;
 
         public static void Check()
         {
@@ -144,6 +145,7 @@ namespace ClientsNotification
 
         public static void FindRetroactiveDates()
         {
+            countDays++;
             if (DateTime.TryParse(initialDateRetro, out DateTime dateInit))
             {
                 initialDateRetro = dateInit.AddDays(-7).ToString("dd-MM-yyyy");
@@ -192,8 +194,12 @@ namespace ClientsNotification
                 foreach(DataRow rowM in missingStations.Rows)
                 {
                     if (row["U_Destino"].ToString().Trim() == rowM["DESTINO"].ToString().Trim())
-                    {                        
-                        row["Column1"] = initialDate;
+                    {
+                        if (DateTime.TryParse(initialDateRetro, out DateTime newDate))
+                        {
+                            int numDays = 7 * countDays;
+                            row["Column1"] = newDate.AddDays(numDays).ToString("dd-MM-yyyy");
+                        }                        
                         finalData.ImportRow(row);
                     }
                 }
@@ -212,10 +218,12 @@ namespace ClientsNotification
 
                     stationsFounded.Add(row["DESTINO"].ToString());
                     //new Sender email
-                    List<string> emails = new List<string>();                    
-                    emails.Add(row["E-MAIL"].ToString().Trim());                    
-                    EmailUtils.EmailSenderByPackage(emails, "", $"Se envió información retroactiva de tu reporte con la fecha: {rowFounded["Column1"]}");
-
+                    if (!stationsFounded.Contains(row["DESTINO"].ToString()))
+                    {
+                        List<string> emails = new List<string>();
+                        emails.Add(row["E-MAIL"].ToString().Trim());
+                        EmailUtils.EmailSenderByPackage(emails, "", $"Se envió información retroactiva de tu reporte con la fecha: {rowFounded["Column1"]}");
+                    }
                     Console.WriteLine(row["ESTACIONES"] + "founded in " + initialDateRetro + " : " + endDateRetro);
                 }
             }
